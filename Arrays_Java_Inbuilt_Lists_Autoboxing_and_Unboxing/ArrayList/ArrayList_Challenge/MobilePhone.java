@@ -9,7 +9,7 @@ public class MobilePhone {
         this.myContacts = new ArrayList<Contact>();
     }
 
-    public boolean addRecord(Contact contact){
+    public boolean addContact(Contact contact){
         if (findContact(contact.getName()) >= 0){
             System.out.println("Contact is already in file");
             return false;
@@ -20,13 +20,14 @@ public class MobilePhone {
 
     public void printContact(){
         System.out.println("We have " + myContacts.size() + " contacts");
-        for (int i = 0; i < myContacts.size(); i++){
-            System.out.println((i+1) + ". " + myContacts.get(i));
+        for (int i = 0; i < this.myContacts.size(); i++){
+            System.out.println((i+1) + ". " + this.myContacts.get(i).getName() + " -> " +
+                                              this.myContacts.get(i).getPhoneNumber());
         }
     }
 
     public boolean updateContact(Contact existedContact, Contact newContact){
-        int position = findContact(existedContact);
+        int position = findContact(existedContact); //some bug is here
         if (position < 0){
             System.out.println("Contact not found!");
             return false;
@@ -68,4 +69,14 @@ public class MobilePhone {
         }
         return null;
     }
+
+    public Contact queryContact(String name){
+        int position = findContact(name);
+        if (position >= 0){
+            return this.myContacts.get(position);
+        }
+        return null;
+    }
 }
+
+//by Ankush Chavan
