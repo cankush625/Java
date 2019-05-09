@@ -18,8 +18,8 @@ public class MobilePhone {
         return true;
     }
 
-    public void printMobileRecord(){
-        System.out.println("We have " + myContacts.size() + " records");
+    public void printContact(){
+        System.out.println("We have " + myContacts.size() + " contacts");
         for (int i = 0; i < myContacts.size(); i++){
             System.out.println((i+1) + ". " + myContacts.get(i));
         }
@@ -37,15 +37,15 @@ public class MobilePhone {
         return true;
     }
 
-    public void removeRecord(Contact value){
-        int position = findContact(value);
-        if (position >= 0){
-            removeRecord(position);
+    public boolean removeContact(Contact contact){
+        int position = findContact(contact);
+        if (position < 0){
+            System.out.println("Contact not found!");
+            return false;
         }
-    }
-
-    public void removeRecord(int position){
-        myContacts.remove(position);
+        this.myContacts.remove(position);
+        System.out.println(contact.getName() + " is deleted successfully!");
+        return true;
     }
 
     private int findContact(Contact contact){
@@ -60,5 +60,12 @@ public class MobilePhone {
             }
         }
         return -1;
+    }
+
+    public String queryContact(Contact contact){
+        if (findContact(contact) >= 0){
+            return contact.getName();
+        }
+        return null;
     }
 }

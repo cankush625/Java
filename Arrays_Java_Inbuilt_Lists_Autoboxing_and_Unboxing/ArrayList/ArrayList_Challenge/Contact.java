@@ -6,7 +6,7 @@ public class Contact {
 
     public Contact(String name, String phoneNumber) {
         this.name = name;
-        PhoneNumber = phoneNumber;
+        this.PhoneNumber = phoneNumber;
     }
 
     public String getName() {
