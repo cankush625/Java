@@ -25,6 +25,7 @@ public class Branch {
             this.customer.add(new Customer(customerName, initialAmount));
             return true;
         }
+        System.out.println("Customer already exist");
         return false;
     }
 
@@ -34,6 +35,7 @@ public class Branch {
             existingCustomer.addTransaction(amount);
             return true;
         }
+        System.out.println("Customer doesn't exist");
         return false;
     }
 
@@ -47,3 +49,5 @@ public class Branch {
         return null;
     }
 }
+
+//by Ankush Chavan

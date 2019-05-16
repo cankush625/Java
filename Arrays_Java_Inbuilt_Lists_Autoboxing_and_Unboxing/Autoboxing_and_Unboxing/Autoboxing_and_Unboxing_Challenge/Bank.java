@@ -16,6 +16,7 @@ public class Bank {
             this.branches.add(new Branch(branchName));
             return true;
         }
+        System.out.println(branchName + " already exist");
         return false;
     }
 
@@ -24,6 +25,7 @@ public class Bank {
         if (branch != null) {
             return branch.newCustomer(customerName, initialAmount);
         }
+        System.out.println("Branch doesn't exist");
         return false;
     }
 
@@ -32,6 +34,7 @@ public class Bank {
         if (branch != null) {
             return branch.addCustomerTransaction(customerName, amount);
         }
+        System.out.println("Branch doesn't exist");
         return false;
     }
 
@@ -57,7 +60,7 @@ public class Bank {
                     System.out.println("Transactions : ");
                     ArrayList<Double> transactions = branchCustomer.getTransactions();
                     for (int j = 0; j < transactions.size(); j++) {
-                        System.out.println("[" + (j + 1) + "] Amount" + transactions.get(j));
+                        System.out.println("[" + (j + 1) + "] Amount " + transactions.get(j));
                     }
                 }
             }
@@ -67,3 +70,5 @@ public class Bank {
         }
     }
 }
+
+//by Ankush Chavan
