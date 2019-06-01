@@ -13,15 +13,20 @@ public class IC_main {
         System.out.println(cankush);
         cankush.setWeapon("Sword");
         savedObject(cankush);
-        loadObject(cankush);
+        //loadObject(cankush);
         System.out.println(cankush);
+
+        ISaveable WareWolf = new Monster("WareWolf", 120, 50);
+        System.out.println("Strength = " + ((Monster) WareWolf).getStrength());
+        System.out.println(WareWolf);
+        savedObject(WareWolf);
     }
 
     public static ArrayList<String> readValues() {
         ArrayList<String> values = new ArrayList<>();
         boolean quit = false;
         int index = 0;
-        System.out.println("Choose \n0. Quit \n 1. To enter a string");
+        System.out.println("Choose \n0. Quit \n1. To enter a string");
 
         while (!quit) {
             System.out.println("Enter your choice : ");
