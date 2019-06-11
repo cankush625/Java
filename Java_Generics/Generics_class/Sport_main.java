@@ -13,21 +13,21 @@ public class Sport_main {
 
         System.out.println(bestInWorld.numPlayers());
 
-        Team_by_providing_class<CricketPlayer> SuperCric = new Team_by_providing_class<>("Super Cric");
+        Team_by_providing_type<CricketPlayer> SuperCric = new Team_by_providing_type<>("Super Cric");
         SuperCric.addPlayer(sachin);
 //        SuperCric.addPlayer(lionel); //Throws an error because type is specified to add Cricket Players only
 //        SuperCric.addPlayer(roger);
 
         System.out.println(SuperCric.numPlayers());
 
-        Team_by_providing_class<FootballPlayer> Barca = new Team_by_providing_class<>("BarcaMagica");
+        Team_by_providing_type<FootballPlayer> Barca = new Team_by_providing_type<>("BarcaMagica");
         Barca.addPlayer(lionel);
         FootballPlayer suarez = new FootballPlayer("Suarez");
         FootballPlayer rooney = new FootballPlayer("Rooney");
         Barca.addPlayer(suarez);
         Barca.addPlayer(rooney);
 
-        Team_by_providing_class<FootballPlayer> Madrid = new Team_by_providing_class<>("RealMadrid");
+        Team_by_providing_type<FootballPlayer> Madrid = new Team_by_providing_type<>("RealMadrid");
         FootballPlayer ronaldo = new FootballPlayer("Ronaldo");
         FootballPlayer bale = new FootballPlayer("Bale");
         FootballPlayer ramos = new FootballPlayer("Ramos");
@@ -35,7 +35,7 @@ public class Sport_main {
         Madrid.addPlayer(bale);
         Madrid.addPlayer(ramos);
 
-        Team_by_providing_class<TenisPlayer> Aussie = new Team_by_providing_class<>("GrandAussie");
+        Team_by_providing_type<TenisPlayer> Aussie = new Team_by_providing_type<>("GrandAussie");
         Aussie.addPlayer(roger);
         System.out.println(Aussie.numPlayers());
 
@@ -43,6 +43,14 @@ public class Sport_main {
         Barca.matchResult(Aussie, 5, 3);
 
         Madrid.matchResult(Aussie, 3, 3);
+
+        System.out.println("Ranking : ");
+        System.out.println(Barca.getName() + " : " + Barca.ranking());
+        System.out.println(Madrid.getName() + " : " + Madrid.ranking());
+        System.out.println(Aussie.getName() + " : " + Aussie.ranking());
+
+        System.out.println(Barca.compareTo(Madrid));
+        System.out.println(Madrid.compareTo(Barca));
     }
 }
 

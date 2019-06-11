@@ -2,14 +2,14 @@ package com.Java_Generics.Generics_class;
 
 import java.util.ArrayList;
 
-public class Team_by_providing_class<T extends Player> { //we can also extend it by using interfaces
+public class Team_by_providing_type<T extends Player> implements Comparable<Team_by_providing_type<T>> { //we can also extend it by using interfaces
     private String name;
     int played = 0;
     int won = 0;
     int lost = 0;
     int tied = 0;
 
-    public Team_by_providing_class(String name) {
+    public Team_by_providing_type(String name) {
         this.name = name;
     }
 
@@ -35,7 +35,7 @@ public class Team_by_providing_class<T extends Player> { //we can also extend it
         return this.members.size();
     }
 
-    public void matchResult(Team_by_providing_class opponent, int ourScore, int theirScore) {
+    public void matchResult(Team_by_providing_type opponent, int ourScore, int theirScore) {
 
         String message;
 
@@ -58,6 +58,17 @@ public class Team_by_providing_class<T extends Player> { //we can also extend it
 
     public int ranking() {
         return (won * 2) + tied;
+    }
+
+    @Override
+    public int compareTo(Team_by_providing_type<T> team) {
+        if (this.ranking() > team.ranking()) {
+            return -1;
+        } else if (this.ranking() < team.ranking()) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 }
 
