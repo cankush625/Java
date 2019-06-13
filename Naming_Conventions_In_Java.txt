@@ -1,0 +1,36 @@
+1. Naming Package : 
+	- Package name must start with a "com." followed by our internet domain name
+		eg. com.cankush
+	- All letters should be in lower case
+	- If there is keyword in the package name then it should be followed by _(underscore)
+		eg. com.ankush._switch
+	- Package name should not start with a number. Instead begin with a underscore.
+
+2. Naming Classes :
+	- Each word in a class name should start with a Camel word(Capital word).
+		eg. JavaClass, LinkedList
+
+3. Naming Interface :
+	- Same as that of the class
+
+4. Naming Method : 
+	- Mixed case
+		eg. linkedList(), addNumber()
+	- Reflect the function performed or result returned.
+
+5. Naming Constant :
+	- All UPPER_CASE
+	- Separate words with underscore
+	- Declare using final keyword
+		eg. static final int MAX_INT
+
+6. Naming Variables :
+	- mixedCase
+	- Should start with lower case letter
+	- Do not use underscore(_).
+		eg. player, leaguesPlayed
+
+7. Naming Type Parameters :
+	- Should be single characters
+	- Should be capital letters
+		eg. E - element, K - key, N - number, T - type, V - value
