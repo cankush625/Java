@@ -51,6 +51,13 @@ public class Basket {
         return 0;
     }
 
+    /**
+     * This method clears the items added in the basket
+     */
+    public void clearBasket() {
+        this.list.clear();
+    }
+
     public Map<StockItem, Integer> items() {
         return Collections.unmodifiableMap(list);
     }

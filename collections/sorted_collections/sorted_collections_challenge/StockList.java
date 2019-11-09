@@ -53,7 +53,7 @@ public class StockList {
      *
      * @param item name of the item
      * @param quantity number if items to be reserve
-     * @return returns the number of items to be reserve
+     * @return returns the number of items reserved
      */
     public int reserveStock(String item, int quantity) {
         StockItem inStock = list.get(item);
@@ -69,7 +69,7 @@ public class StockList {
      *
      * @param item name of the item
      * @param quantity number if items to be un-reserve
-     * @return returns the number of items to be un-reserve
+     * @return returns the number of items un-reserved
      */
     public int unreserveStock(String item, int quantity) {
         StockItem inStock = list.get(item);
