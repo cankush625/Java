@@ -33,6 +33,7 @@ public class StockItemManager {
         //purchasing items
         //adding to the basket
         Basket ankushsBasket = new Basket("Ankush");
+
         sellItem(ankushsBasket, "smartphone", 2);
         System.out.println(ankushsBasket);
 
@@ -40,13 +41,28 @@ public class StockItemManager {
             System.out.println("There are no more laptops in the stock");
         }
         sellItem(ankushsBasket, "juice", 3);
-        System.out.println(ankushsBasket);
 
         sellItem(ankushsBasket, "bread", 3);
         sellItem(ankushsBasket, "cake", 1);
         sellItem(ankushsBasket, "cup", 2);
+
+//        System.out.println(stockList);
+
+        Basket basket = new Basket("customer");
+        sellItem(basket, "juice", 2);
+        sellItem(basket, "bread", 20);
+        removeItem(basket, "bread", 3);
+        System.out.println(basket);
+
+        removeItem(ankushsBasket, "juice", 1);
+        removeItem(ankushsBasket, "bread", 1);
         System.out.println(ankushsBasket);
 
+        System.out.println("Display stockList before and after checkout");
+        System.out.println(basket);
+        System.out.println(stockList);
+        checkOut(basket);
+        System.out.println(basket);
         System.out.println(stockList);
 
 /*
@@ -56,18 +72,26 @@ public class StockItemManager {
 */
 
         //Adjusting the stock
+        StockItem laptop = stockList.items().get("laptop");
         //Adding 20 laptops in the stock
-        stockList.items().get("laptop").adjustStock(20); //We can get the item by using items() from stockList
-        System.out.println(stockList);
+        if (laptop != null) {
+            stockList.items().get("laptop").adjustStock(20); //We can get the item by using items() from stockList
+//        System.out.println(stockList);
+        }
 
         //Removing 10 items from the stock
-        stockList.get("laptop").adjustStock(-10); //We can also get the item directly without using items()
-        System.out.println(stockList);
+        if (laptop != null) {
+            stockList.get("laptop").adjustStock(-10); //We can also get the item directly without using items()
+            System.out.println(stockList);
+        }
 
         //Providing unmodifiable map of name and prices
-        for (Map.Entry<String, Double> price: stockList.priceList().entrySet()) {
-            System.out.println(price.getKey() + " costs " + price.getValue());
-        }
+//        for (Map.Entry<String, Double> price: stockList.priceList().entrySet()) {
+//            System.out.println(price.getKey() + " costs " + price.getValue());
+//        }
+
+        checkOut(ankushsBasket);
+        System.out.println(ankushsBasket);
     }
 
     /**
@@ -114,7 +138,7 @@ public class StockItemManager {
         return 0;
     }
 
-    public static void checkOut(Basket basket) {
+    private static void checkOut(Basket basket) {
         for (Map.Entry<StockItem, Integer> item: basket.items().entrySet()) {
             stockList.sellStock(item.getKey().getName(), item.getValue());
         }
