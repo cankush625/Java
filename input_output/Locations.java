@@ -1,12 +1,13 @@
 package com.input_output;
 
+import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 
 public class Locations implements Map<Integer, Location> {
-    private static Map<Integer, Location> locations = new HashMap<Integer, Location>();
+    private static Map<Integer, Location> locations = new HashMap<>();
 
     public static void main(String[] args) throws IOException{
         try (FileWriter locFile = new FileWriter("locations.txt");
@@ -22,9 +23,7 @@ public class Locations implements Map<Integer, Location> {
 
     static {
         // Reading data from file
-        Scanner scanner = null;
-        try {
-            scanner = new Scanner(new FileReader("locations.txt"));
+        try(Scanner scanner = new Scanner(new FileReader("locations.txt"))) {
             scanner.useDelimiter(", ");
             while(scanner.hasNextLine()) {
                 int loc = scanner.nextInt();
@@ -36,10 +35,22 @@ public class Locations implements Map<Integer, Location> {
             }
         } catch (IOException e) {
             e.printStackTrace();
-        } finally {
-            if (scanner != null) {
-                scanner.close();
+        }
+
+        // Now read the exits
+        try(BufferedReader dirFile = new BufferedReader(new FileReader("directions.txt"))) {
+            String input;
+            while((input = dirFile.readLine()) != null) {
+                String[] data = input.split(", ");
+                int loc = Integer.parseInt(data[0]);
+                String direction = data[1];
+                int destination = Integer.parseInt(data[2]);
+                System.out.println("Imported loc: " + loc + ": " + destination);
+                Location location = locations.get(loc);
+                location.addExit(direction, destination);
             }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 

@@ -31,6 +31,11 @@ public class Location {
         return new HashMap<String, Integer>(exits); //We are creating map here and by copying the original map into this
         //map we are returning its values. This will prevent the external code from changing the original values in the map
     }
+
+    // Method to add exits
+    protected void addExit(String direction, int location) {
+        exits.put(direction, location);
+    }
 }
 
 //by Ankush Chavan
