@@ -3,6 +3,7 @@
 ## Problem:
 ## Find k closest elements to x.
 
+```
 public class KClosestElements {
     // Creating max heap for storing a pair of difference between x and element as key and the element as a value.
     // We will sort according to the key and create a max heap. If the heap size is greater than k then we will pop the element
@@ -32,3 +33,4 @@ public class KClosestElements {
         kClosestElements.kClosestElements(array, x, k);
     }
 }
+```
